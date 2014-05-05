@@ -1,0 +1,17 @@
+Ansible Chromedriver Role 
+=========================
+
+This is a reusable ansible role which installs a recent version
+of chromedriver into `/usr/local/bin/chromdriver_VERSION/` and
+points `/usr/local/bin/chromedriver` to that.
+
+Supported Ansible Versions
+--------------------------
+
+This role was tested with ansible => 1.5.
+
+Supported Operating Systems
+---------------------------
+
+All maintained Debian and Ubuntu systems.
+

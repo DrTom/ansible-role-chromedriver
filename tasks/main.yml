@@ -1,0 +1,28 @@
+- apt: pkg={{item}} state=latest update_cache=yes cache_valid_time=3600
+  with_items: [unzip]
+
+- stat: path={{chromedirver_bin_path}}
+  register: chromedriver_bin_stats
+
+- file: path={{chromedriver_download_dir}}
+        state=directory
+  when: not chromedriver_bin_stats.stat.exists
+
+- get_url: url=https://chromedriver.storage.googleapis.com/{{chromedriver_version}}/chromedriver_linux{{ ansible_userspace_bits }}.zip
+           dest={{chromedriver_download_path}}
+  when: not chromedriver_bin_stats.stat.exists
+
+- command: unzip {{chromedriver_download_path}} -d {{chromedriver_download_dir}}
+           creates={{chromedriver_download_bin_path}}
+  when: not chromedriver_bin_stats.stat.exists
+
+- command: cp {{chromedriver_download_bin_path}} {{chromedirver_bin_path}}
+  when: not chromedriver_bin_stats.stat.exists
+
+- file: path={{chromedirver_bin_path}}
+        mode=0755
+
+- file: dest=/usr/local/bin/chromedriver
+        src={{chromedirver_bin_path}}
+        state=link
+

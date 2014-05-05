@@ -1,0 +1,9 @@
+
+chromedriver_version: '2.10'
+chromedirver_bin_path: /usr/local/bin/chromdriver_{{chromedriver_version}}
+chromedriver_download_dir:  /tmp/download_chromedriver_{{chromedriver_version}}
+chromedriver_download_path: "{{chromedriver_download_dir}}/chromedriver-{{chromedriver_version}}.zip"
+chromedriver_download_bin_path: "{{chromedriver_download_dir}}/chromedriver"
+
+
+
