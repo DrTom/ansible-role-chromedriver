@@ -1,7 +1,7 @@
 - apt: pkg={{item}} state=latest update_cache=yes cache_valid_time=3600
   with_items: [unzip]
 
-- stat: path={{chromedirver_bin_path}}
+- stat: path={{chromedriver_bin_path}}
   register: chromedriver_bin_stats
 
 - file: path={{chromedriver_download_dir}}
@@ -16,13 +16,13 @@
            creates={{chromedriver_download_bin_path}}
   when: not chromedriver_bin_stats.stat.exists
 
-- command: cp {{chromedriver_download_bin_path}} {{chromedirver_bin_path}}
+- command: cp {{chromedriver_download_bin_path}} {{chromedriver_bin_path}}
   when: not chromedriver_bin_stats.stat.exists
 
-- file: path={{chromedirver_bin_path}}
+- file: path={{chromedriver_bin_path}}
         mode=0755
 
 - file: dest=/usr/local/bin/chromedriver
-        src={{chromedirver_bin_path}}
+        src={{chromedriver_bin_path}}
         state=link
 
