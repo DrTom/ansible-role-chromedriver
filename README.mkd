@@ -1,4 +1,4 @@
-Ansible Chromedriver Role 
+Ansible Chromedriver Role
 =========================
 
 This is a reusable ansible role which installs a recent version
@@ -8,9 +8,9 @@ points `/usr/local/bin/chromedriver` to that.
 
 ### Chromedriver Version
 
-The default version can be overridden, e.g. like 
+The default version can be overridden, e.g. like
 
-    ansible-playbook -i hosts-zhdk site.yml --extra-vars "chromedriver_version=2.9" 
+    ansible-playbook -i hosts-zhdk site.yml --extra-vars "chromedriver_version=2.9"
 
 
 Note that old versions will not be deleted but the symlink will always point to
